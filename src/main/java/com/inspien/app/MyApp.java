@@ -12,21 +12,21 @@ public class MyApp {
     @Autowired
     private TestComponent testComponent;
 
+    @Autowired
+    private static IOCContainer container;
+
     public void run() {
         System.out.println("MyApp is running.");
-        TestComponent testComponent = IOCContainer.getBean(TestComponent.class);
+        testComponent = IOCContainer.getBean(TestComponent.class);
         testComponent.sayHello();
     }
 
     public static void main(String[] args) {
-        IOCContainer container = new IOCContainer("com.inspien");
+        container = new IOCContainer("com.inspien");
         MyApp app = container.getBean(MyApp.class);
         app.run();
     }
 
-    public TestComponent getTestComponent() {
-        return testComponent;
-    }
 
 
 }
